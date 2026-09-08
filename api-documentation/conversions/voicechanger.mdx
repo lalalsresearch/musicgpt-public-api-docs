@@ -88,7 +88,10 @@ data = {
 
 # Option 1: audio_url
 data["audio_url"] = "<YOUR_AUDIO_URL>"
-response = requests.post(url, headers=headers, data=data)
+# This endpoint expects multipart/form-data, so send the fields as form parts
+response = requests.post(
+    url, headers=headers, files={k: (None, str(v)) for k, v in data.items()}
+)
 
 # Option 2: File Upload
 # with open("song.mp3", "rb") as f:
@@ -128,7 +131,7 @@ print(response.json())
   "conversion_path": "https://cdn1.musicgpt.com/projects/standard/ffa2da3a-af79-4cbd-9cf6-ea178c9b2f90.mp3",
   "conversion_cost": "0.78", 
   "conversion_duration": 272.44,
-  "message": "Conversion Completed",
+  "message": "Conversion Completed"
 }
 ```
 ---

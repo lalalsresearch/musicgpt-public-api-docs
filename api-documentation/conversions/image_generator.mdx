@@ -29,7 +29,7 @@ Use this endpoint to generate an image from a text prompt and optional style set
 
 ## Try it Yourself
 
-Visit the [Image Generator Endpoint Explorer](/api-documentation/endpoint/imagegenerator) to generate AI images in real time.
+Visit the [Image Generator Endpoint Explorer](/api-documentation/endpoint/image_generator) to generate AI images in real time.
 
 > 🚀 Experiment with different prompts and styles—from realistic landscapes to anime artwork, abstract concepts, and minimalist illustrations.
 
@@ -72,7 +72,7 @@ payload = {
     "webhook_url": "https://abcd.requestcatcher.com/"
 }
 
-response = requests.post(url, json=payload, headers=headers)
+response = requests.post(url, data=payload, headers=headers)
 print(response.json())
 ```
 

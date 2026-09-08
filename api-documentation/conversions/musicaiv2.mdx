@@ -42,7 +42,7 @@ openapi: 'POST /v2/MusicAI'
 Pass your choice with the `model` parameter (`v6`, `v6-pro`, `v7`, or `v7-pro`). Streaming is available on the `pro` models for paid users. Per-model rates are listed on the [Pricing page](/api-documentation/index/pricing).
 
 <Info>
-If you provide a voice_id or set make_vocal_only to true, the request will always use the v6 model, regardless of the value passed in the model parameter.
+If you provide a `voice_id` or set `vocal_only` to true, the request will always use the `v6` model, regardless of the value passed in the `model` parameter.
 </Info>
 
 ### Key features
@@ -83,7 +83,7 @@ Prompt: a song about greenery, nature and forest.
 
 ## Try It Yourself
 
-Use the [MusicAI Endpoint Explorer](/api-documentation/endpoint/MusicAiv2) to test your own requests using prompts, lyrics, and more.
+Use the [MusicAI Endpoint Explorer](/api-documentation/endpoint/Musicaiv2) to test your own requests using prompts, lyrics, and more.
 
 > Each request returns **two distinct versions** of the track.
 
@@ -165,7 +165,6 @@ payload = {
     "lyrics": "It's a brand new day",
     "make_instrumental": False,
     "vocal_only": False,
-    "voice_id": "e1cb7380-e3db-433a-b186-a996d7545986",
     "title": "My Generated Track",
     "gender": "female",
     "generate_album_cover": True,
@@ -252,7 +251,7 @@ Album Cover Webhook
   "conversion_id_1": "eba76eae-9c77-5b09-9f2b-96a8bdef0f36",
   "conversion_id_2": "1cf119ce-a78c-500b-ad43-4b1f598507cb",
   "album_cover_generator_output": true,
-  "subtype": "album_cover_generation",
+  "subtype": "album_cover_generation"
 }
 ```
 

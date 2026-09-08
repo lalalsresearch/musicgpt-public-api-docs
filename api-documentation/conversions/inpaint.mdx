@@ -107,7 +107,7 @@ data = {
   "gender": "male",
   "num_outputs": 2,
   "generate_album_cover": True,
-  “lyrics_timestamps": True,
+  "lyrics_timestamps": True,
   "title": "My Generated Track",
   "webhook_url": "https://example.com/webhook"
 }
@@ -121,7 +121,7 @@ response = requests.post(url, headers=headers, data=data)
 #     files = {"audio_file": f}
 #     response = requests.post(url, headers=headers, data=data, files=files)
 
- print(response.json())
+print(response.json())
 ```
 
 ---
@@ -190,7 +190,7 @@ Album Cover Webhook
   "conversion_id_1": "eba76eae-9c77-5b09-9f2b-96a8bdef0f36",
   "conversion_id_2": "1cf119ce-a78c-500b-ad43-4b1f598507cb",
   "album_cover_generator_output": true,
-  "subtype": "album_cover_generation",
+  "subtype": "album_cover_generation"
 }
 ```
 

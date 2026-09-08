@@ -122,7 +122,7 @@ print(response.json())
   "midi_file_path": "",
   "sonify_file_path": "",
   "notes_file_path": "",
-  "message": "Audio To MIDI Completed",
+  "message": "Audio To MIDI Completed"
 }
 ```
 
@@ -130,10 +130,8 @@ print(response.json())
 
 ## Common Errors
 
-- **400 Bad Request**: Invalid `audio_path` or missing required parameters.
-- **404 Not Found**: Provided audio file not found in S3.
-- **422 Unprocessable Entity**: Unsupported audio format.
-- **500 Internal Server Error**: An unexpected error occurred while processing.
+- **400 Bad Request**: Invalid request parameters.
+- **500 Internal Server Error**: The conversion failed while processing.
 
 ---
 

@@ -63,6 +63,8 @@
               "api-documentation/conversions/extraction",
               "api-documentation/conversions/voicechanger",
               "api-documentation/conversions/sing_over_instrumental",
+              "api-documentation/conversions/sing_over_vocal",
+              "api-documentation/conversions/image_generator",
               "api-documentation/conversions/lyrics_generator",              
               "api-documentation/conversions/audiotomidi",
               "api-documentation/conversions/audiocutter",
@@ -121,6 +123,8 @@
               "api-documentation/endpoint/extend",
               "api-documentation/endpoint/inpaint",
               "api-documentation/endpoint/sing_over_instrumental",
+              "api-documentation/endpoint/sing_over_vocal",
+              "api-documentation/endpoint/image_generator",
               "api-documentation/endpoint/lyrics_generator",
               "api-documentation/endpoint/imagetosong"
               

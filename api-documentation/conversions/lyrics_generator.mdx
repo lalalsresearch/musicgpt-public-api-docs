@@ -28,7 +28,8 @@ GET /v1/prompt_to_lyrics
 ### cURL
 
 ```bash
-curl -X GET "https://api.musicgpt.com/api/public/v1/prompt_to_lyrics?prompt=A hopeful song about starting over" \
+curl -G "https://api.musicgpt.com/api/public/v1/prompt_to_lyrics" \
+  --data-urlencode "prompt=A hopeful song about starting over" \
   -H "Authorization: <API_KEY>" \
   -H "accept: application/json"
 ```
