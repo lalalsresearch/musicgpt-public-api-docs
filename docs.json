@@ -74,7 +74,6 @@
               "api-documentation/conversions/extractkeybpm",
               "api-documentation/conversions/fileconvert",
               "api-documentation/conversions/audiomastering",
-              "api-documentation/conversions/upload",
               "api-documentation/conversions/imagetosong"
 
   
@@ -96,14 +95,7 @@
 
             ]
           },
-          {
-            "group" : "Get Upload ID",
-            "pages" : [
-              "api-documentation/getuploadID/upload",
-              "api-documentation/getuploadID/verify",
-              "api-documentation/getuploadID/preprocess"
-            ]
-          },
+         
           {
             "group": "Conversion Endpoints",
             "pages": [

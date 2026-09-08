@@ -2945,8 +2945,8 @@
               },
               "lyrics_section_to_replace":{
                 "type": "string",
-                "description":"Lyrics to be used for the replaced portion(optional, max 5000 characters)",
-                "maxLength": 5000
+                "description":"Lyrics to be used for the replaced portion(optional, max 3000 characters)",
+                "maxLength": 3000
               },
               "gender": {
                 "type": "string",
