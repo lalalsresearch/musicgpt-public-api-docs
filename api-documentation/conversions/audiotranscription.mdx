@@ -1,0 +1,127 @@
+---
+title: 'Audio Transcribe'
+openapi: 'POST /v1/audio_transcribe'
+---
+
+Convert your audio recordings into high-accuracy text using AI.
+
+**Audio Transcribe** enables seamless transcription for podcasts, interviews, lectures, meetings, and more.
+
+- Fast and accurate speech-to-text conversion
+- Supports multiple languages
+- Instant or asynchronous transcription with webhook support
+
+Audio Transcribe ensures reliable, professional-grade transcripts for your audio content.
+
+---
+
+## Endpoint
+
+```http
+POST /v1/audio_transcribe
+```
+
+Use this endpoint to transcribe audio recordings into text.
+
+---
+
+## Sample Output
+
+Transcript output for a short sample recording:
+
+> "Welcome to the show. Today we are talking about how machines learn to listen, and what that means for the music you hear every day. Let's get started."
+
+---
+
+## Try it Yourself
+
+Visit the [Audio Transcribe Endpoint Explorer](/api-documentation/endpoint/audiotranscribe) to upload audio files and get instant transcripts.
+
+---
+
+## Request Parameters
+
+| Parameter        | Type    | Required | Description                                                  |
+|------------------|---------|----------|--------------------------------------------------------------|
+| `audio_url`      | String  | Optional | URL to the audio file you want to transcribe. Either `audio_url` or `audio_file` must be provided. |
+| `audio_file`  | `File` | Optional | Upload the audio file directly. Either `audio_url` or `audio_file` must be provided. |
+| `language`       | String  | Optional | Language code (e.g., `en`, `es`, `fr`) for targeted accuracy |
+| `webhook_url`    | String  | Optional | Webhook URL to receive the transcription asynchronously     |
+
+> **content-type:** multipart/form-data
+
+>**Note:** Either audio_file or audio_url must be provided.
+---
+
+## Sample Request
+
+### Python
+```python
+import requests
+
+url = "https://api.musicgpt.com/api/public/v1/audio_transcribe"
+headers = {"Authorization": "<API_KEY>"}
+
+payload = {
+    "language": "en",
+    "translate": True,
+    "transcription_format": "plain_text",
+    "word_timestamps": True
+}
+
+# Option 1: audio_url
+payload["audio_url"] = "<YOUR_AUDIO_URL>"
+response = requests.post(url, headers=headers, data=payload)
+
+# Option 2: File Upload
+# with open("audio.mp3", "rb") as f:
+#     files = {"audio_file": f}
+#     response = requests.post(url, headers=headers, data=payload, files=files)
+
+print(response.json())
+```
+
+---
+
+## Sample Response
+
+### Success (200 OK)
+```json
+{
+    "success":true,
+    "task_id":"cade1dea-a9fb-49d3-a5b2-52f786ea5ad3",
+    "conversion_id":"1c5a2543-5b99-499c-8bb4-28424497e60f",
+    "eta":46,
+    "credit_estimate":0.04,
+    "message":"",
+    "status":"IN_QUEUE"
+}
+```
+
+---
+
+## Webhook Response
+
+When transcription completes, your webhook will receive:
+
+```json
+{
+    "success": true, 
+    "conversion_type": "Audio Transcription", 
+    "task_id": "cade1dea-a9fb-49d3-a5b2-52f786ea5ad3", 
+    "conversion_id": "1c5a2543-5b99-499c-8bb4-28424497e60f", 
+    "transcription": "Welcome to the show. Today we are talking about how machines learn to listen.", 
+    "translation": null, 
+    "detected_language": "en", 
+    "word_timestamps": [
+        {"word": "Welcome", "start": 0.0, "end": 0.42},
+        {"word": "to", "start": 0.42, "end": 0.55},
+        {"word": "the", "start": 0.55, "end": 0.68},
+        {"word": "show", "start": 0.68, "end": 1.01}
+    ]
+}
+```
+
+---
+
+## Payload and Request Formation
