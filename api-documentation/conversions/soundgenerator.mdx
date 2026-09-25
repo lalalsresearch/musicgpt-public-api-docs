@@ -3,6 +3,18 @@ title: Sound Generator
 openapi: 'POST /v1/sound_generator'
 ---
 
+
+<div className="mg-simple-banner">
+  <p className="mg-banner-headline">Sound Generator Pro is here - our fastest, highest-quality generation yet.</p>
+  <p className="mg-banner-detail">
+    Free all October - up to 500 generations/day (20/hour). After that, prices drop by over 200%.{' '}
+    <a href="/api-documentation/index/pricing">See the new pricing →</a>
+  </p>
+</div>
+
+
+
+
 Create custom sounds with AI using just a simple prompt.
 
 **Sound Generator** lets you synthesize high-quality sound effects and audio textures directly from text prompts. Perfect for developers, game designers, filmmakers, and creative technologists who need original sounds on demand.
@@ -14,6 +26,22 @@ Create custom sounds with AI using just a simple prompt.
 Sound Generator is designed for flexibility, speed, and professional-grade quality.
 
 ---
+
+## What it supports
+
+| Feature | What it creates | Example prompt |
+|---|---|---|
+| **Sound FX** | A one-shot sound, action, ambience, or short audio scene. | Generate sound FX of a realistic car crash with tire skid, metal impact, and brief glass shatter; no music; 6 seconds. |
+| **Loops** | Repeatable audio designed to cycle seamlessly at a stated tempo. | Generate loop of tight kick and snare at 80 BPM in 4/4, four bars, with a clean loop point and no vocals. |
+| **Samples** | A single musical note, chord, hit, texture, or short isolated phrase. | Generate sample of a clean E major chord on acoustic guitar, one sustained hit with natural decay and no other instruments. |
+
+---
+
+## Special features
+
+- **BPM control** — Specify an exact tempo in your prompt (e.g. "at 90 BPM") and Sound Generator locks the output to that tempo, useful when loops need to sync cleanly with an existing track.
+- **Foley support** — Generate everyday, real-world sound effects like footsteps, cloth rustle, or object handling, commonly layered into film, video, and game audio for realism.
+- **Audio length control** — Set the exact duration of your generation, from **5 seconds to 2 minutes**, using the `audio_length` parameter.
 
 ## Endpoint
 
