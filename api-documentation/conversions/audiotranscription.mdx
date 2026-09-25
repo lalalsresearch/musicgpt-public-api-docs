@@ -114,11 +114,31 @@ When transcription completes, your webhook will receive:
     "translation": null, 
     "detected_language": "en", 
     "word_timestamps": [
-        {"word": "Welcome", "start": 0.0, "end": 0.42},
-        {"word": "to", "start": 0.42, "end": 0.55},
-        {"word": "the", "start": 0.55, "end": 0.68},
-        {"word": "show", "start": 0.68, "end": 1.01}
-    ]
+        {
+            "index": 0,
+            "text": "Welcome",
+            "start": 0,
+            "end": 420
+        },
+        {
+            "index": 1,
+            "text": "to",
+            "start": 420,
+            "end": 550
+        },
+        {
+            "index": 2,
+            "text": "the",
+            "start": 550,
+            "end": 680
+        },
+        {
+            "index": 3,
+            "text": "show",
+            "start": 680,
+            "end": 1010
+        },....
+]
 }
 ```
 

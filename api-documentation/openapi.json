@@ -129,28 +129,32 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  }
+          "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
                 },
-                "example": {
-                  "success": false,
-                  "message": "Invalid request parameters"
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
                 }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
+        }
+      }
         },
         "security": [
           {
@@ -247,27 +251,31 @@
             }
           },
           "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "success": false,
-                  "error": "Internal Server Error"
-                }
-              }
-            }
+  "description": "Internal Server Error",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "error_code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
           }
+        }
+      },
+      "example": {
+        "success": false,
+        "error_code": "INTERNAL_SERVER_ERROR",
+        "message": ""
+      }
+    }
+  }
+}
         },
         "security": [
           {
@@ -358,27 +366,31 @@
             }
           },
           "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "success": false,
-                  "error": "Internal Server Error"
-                }
-              }
-            }
+  "description": "Internal Server Error",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "error_code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
           }
+        }
+      },
+      "example": {
+        "success": false,
+        "error_code": "INTERNAL_SERVER_ERROR",
+        "message": ""
+      }
+    }
+  }
+}
         },
         "security": [
           {
@@ -492,49 +504,83 @@
             }
           },
           "402": {
-            "description": "Payment Required",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "success": false,
-                  "error": "Insufficient credit balance"
-                }
-              }
-            }
+  "description": "Payment Required",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "success": false,
-                  "error": "Internal Server Error"
-                }
-              }
-            }
+          "error_code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
           }
+        }
+      },
+      "example": {
+        "success": false,
+        "error_code": "INSUFFICIENT_CREDITS",
+        "message": ""
+      }
+    }
+  }
+},
+"422": {
+  "description": "Unprocessable Entity",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "error_code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "example": {
+        "success": false,
+        "error_code": "UNPROCESSABLE_CONTENT",
+        "message": ""
+      }
+    }
+  }
+},
+"500": {
+  "description": "Internal Server Error",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "error_code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "example": {
+        "success": false,
+        "error_code": "INTERNAL_SERVER_ERROR",
+        "message": ""
+      }
+    }
+  }
+}
         },
         "security": [
           {
@@ -590,7 +636,7 @@
                    "voice_id": {
                     "type": "string",
                     "description": "Voice model to convert generated audio",
-                    "example": "e1cb7380-e3db-433a-b186-a996d7545986"
+                    "example": ""
               
                   },
                   "generate_album_cover": {
@@ -677,49 +723,83 @@
             }
           },
           "402": {
-            "description": "Payment Required",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "success": false,
-                  "message": "Insufficient credit balance"
-                }
-              }
-            }
+  "description": "Payment Required",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
           },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "success": false,
-                  "message": "Internal Server Error"
-                }
-              }
-            }
+          "error_code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
           }
+        }
+      },
+      "example": {
+        "success": false,
+        "error_code": "INSUFFICIENT_CREDITS",
+        "message": ""
+      }
+    }
+  }
+},
+"422": {
+  "description": "Unprocessable Entity",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "error_code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "example": {
+        "success": false,
+        "error_code": "UNPROCESSABLE_CONTENT",
+        "message": ""
+      }
+    }
+  }
+},
+"500": {
+  "description": "Internal Server Error",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "error_code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "example": {
+        "success": false,
+        "error_code": "INTERNAL_SERVER_ERROR",
+        "message": ""
+      }
+    }
+  }
+}
         },
         "security": [
           {
@@ -810,24 +890,6 @@
     }
   }
 },
-      "400": {
-        "description": "Bad Request",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "success": { "type": "boolean" },
-                "error": { "type": "string" }
-              }
-            },
-            "example": {
-              "success": false,
-              "error": "The file could not be downloaded from the provided URL"
-            }
-          }
-        }
-      },
       "402": {
         "description": "Payment Required",
         "content": {
@@ -835,13 +897,21 @@
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean" },
-                "error": { "type": "string" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
             },
             "example": {
               "success": false,
-              "error": "Insufficient credit balance"
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
             }
           }
         }
@@ -853,13 +923,21 @@
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean" },
-                "error": { "type": "string" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
             },
             "example": {
               "success": false,
-              "error": "Both audio_url and audio_file cannot be None"
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
@@ -871,13 +949,21 @@
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean" },
-                "error": { "type": "string" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
             },
             "example": {
               "success": false,
-              "error": "Internal Server Error"
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -892,7 +978,7 @@
     [
   {
     "lang": "Python",
-    "source": "import requests\n\nurl = \"https://api.musicgpt.com/api/public/v1/VoiceChanger\"\n\nheaders = {\n    \"Authorization\": \"<API_KEY>\"\n}\n\ndata = {\n    \"voice_id\": \"e0bb585f-b798-4bac-ac4e-de7fff38f9d75\",\n    \"remove_background\": 1,\n    \"pitch\": 0,\n    \"webhook_url\": \"https://example.com/my-webhook\"\n}\n\n# Option 1: audio_url\ndata[\"audio_url\"] = \"<YOUR_AUDIO_URL>\"\nresponse = requests.post(url, headers=headers, data=data)\n\n# Option 2: File Upload\n# with open(\"song.mp3\", \"rb\") as f:\n#     files = {\"audio_file\": f}\n#     response = requests.post(url, headers=headers, data=data, files=files)\n\nprint(response.json())"
+    "source": "import requests\n\nurl = \"https://api.musicgpt.com/api/public/v1/VoiceChanger\"\n\nheaders = {\n    \"Authorization\": \"<API_KEY>\"\n}\n\ndata = {\n    \"voice_id\": \"<VOICE_ID>\",\n    \"remove_background\": 1,\n    \"pitch\": 0,\n    \"webhook_url\": \"https://example.com/my-webhook\"\n}\n\n# Option 1: audio_url\ndata[\"audio_url\"] = \"<YOUR_AUDIO_URL>\"\nresponse = requests.post(url, headers=headers, data=data)\n\n# Option 2: File Upload\n# with open(\"song.mp3\", \"rb\") as f:\n#     files = {\"audio_file\": f}\n#     response = requests.post(url, headers=headers, data=data, files=files)\n\nprint(response.json())"
   }
 ]
   }
@@ -974,24 +1060,6 @@
     }
   }
 },
-      "400": {
-        "description": "Bad Request",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "success": { "type": "boolean" },
-                "error": { "type": "string" }
-              }
-            },
-            "example": {
-              "success": false,
-              "error": "The file could not be downloaded from the provided URL"
-            }
-          }
-        }
-      },
       "402": {
         "description": "Payment Required",
         "content": {
@@ -999,13 +1067,21 @@
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean" },
-                "error": { "type": "string" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
             },
             "example": {
               "success": false,
-              "error": "Insufficient credit balance"
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
             }
           }
         }
@@ -1017,13 +1093,21 @@
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean" },
-                "error": { "type": "string" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
             },
             "example": {
               "success": false,
-              "error": "Both audio_url and audio_file cannot be None"
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
@@ -1035,13 +1119,21 @@
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean" },
-                "error": { "type": "string" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
             },
             "example": {
               "success": false,
-              "error": "Internal Server Error"
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -1085,7 +1177,7 @@
               "gender": {
                 "type": "string",
                 "description": "Gender preference for the voice (e.g., \"male\", \"female\")",
-                "example": "female"
+                "example": ""
               },
               "sample_audio_url":{
                 "type":"string",
@@ -1141,47 +1233,83 @@
         }
       },
       "402": {
-        "description": "Payment Required",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "success": { "type": "boolean", "example": false },
-                "message": { "type": "string", "example": "Insufficient credit balance" }
-              }
-            }
+  "description": "Payment Required",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "error_code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
           }
         }
       },
-      "422": {
-        "description": "Validation Error",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "success": { "type": "boolean", "example": false },
-                "message": { "type": "string", "example": "Missing required field: text" }
-              }
-            }
-          }
-        }
-      },
-      "500": {
-        "description": "Server Error",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "success": { "type": "boolean", "example": false },
-                "message": { "type": "string", "example": "Internal Server Error" }
-              }
-            }
-          }
-        }
+      "example": {
+        "success": false,
+        "error_code": "INSUFFICIENT_CREDITS",
+        "message": ""
       }
+    }
+  }
+},
+"422": {
+  "description": "Unprocessable Entity",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "error_code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "example": {
+        "success": false,
+        "error_code": "UNPROCESSABLE_CONTENT",
+        "message": ""
+      }
+    }
+  }
+},
+"500": {
+  "description": "Internal Server Error",
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "error_code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "example": {
+        "success": false,
+        "error_code": "INTERNAL_SERVER_ERROR",
+        "message": ""
+      }
+    }
+  }
+}
     },
     "security": [
       {
@@ -1270,35 +1398,85 @@
             }
           }
         },
-        "422": {
-          "description": "Validation Error",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "success": { "type": "boolean", "example": false },
-                  "message": { "type": "string", "example": "Either audio_url or audio_file must be provided." }
+        "402": {
+        "description": "Payment Required",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
                 }
               }
-            }
-          }
-        },
-        "500": {
-          "description": "Server Error",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "success": { "type": "boolean", "example": false },
-                  "message": { "type": "string", "example": "Internal Server Error" }
-                }
-              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
             }
           }
         }
       },
+      "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal Server Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
+            }
+          }
+        }
+      }
+    },
       "security": [
         {
           "ApiKeyAuth": []
@@ -1375,30 +1553,80 @@
     }
   }
 },
-      "422": {
-        "description": "Validation Error",
+      "402": {
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Either audio_url or audio_file must be provided." }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
       },
       "500": {
-        "description": "Server Error",
+        "description": "Internal Server Error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Internal Server Error" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -1478,30 +1706,80 @@
     }
   }
 },
-      "422": {
-        "description": "Validation Error",
+      "402": {
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Either audio_url or audio_file must be provided." }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
       },
       "500": {
-        "description": "Server Error",
+        "description": "Internal Server Error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Internal Server Error" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -1581,30 +1859,80 @@
     }
   }
 },
-      "422": {
-        "description": "Validation Error",
+      "402": {
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Either audio_url or audio_file must be provided." }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
       },
       "500": {
-        "description": "Server Error",
+        "description": "Internal Server Error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Internal Server Error" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -1684,30 +2012,80 @@
     }
   }
 },
-      "422": {
-        "description": "Validation Error",
+      "402": {
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Either audio_url or audio_file must be provided." }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
       },
       "500": {
-        "description": "Server Error",
+        "description": "Internal Server Error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Internal Server Error" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -1814,16 +2192,80 @@
     }
   }
 },
-      "500": {
-        "description": "Server Error",
+      "402": {
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Internal Server Error" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal Server Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -1910,30 +2352,80 @@
           }
         }
       },
-      "422": {
-        "description": "Validation Error",
+      "402": {
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Prompt is required for sound generation." }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
       },
       "500": {
-        "description": "Server Error",
+        "description": "Internal Server Error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Internal Server Error" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -2023,74 +2515,80 @@
     }
   }
 },
-      "400": {
-        "description": "Invalid parameters",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Invalid output format specified" }
-              }
-            }
-          }
-        }
-      },
-      "401": {
-        "description": "Invalid authentication",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Authentication failed" }
-              }
-            }
-          }
-        }
-      },
       "402": {
-        "description": "Insufficient credits",
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Insufficient credits for this operation" },
-                "required_credits": { "type": "number", "example": 150.75 },
-                "available_credits": { "type": "number", "example": 100.0 }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
             }
           }
         }
       },
-      "404": {
-        "description": "User or plan not found",
+      "422": {
+        "description": "Unprocessable Entity",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "User subscription plan not found" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
       },
       "500": {
-        "description": "Internal server error",
+        "description": "Internal Server Error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Internal server error during mastering" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -2189,74 +2687,80 @@
     }
   }
 },
-      "400": {
-        "description": "Invalid parameters",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Invalid time range specified" }
-              }
-            }
-          }
-        }
-      },
-      "401": {
-        "description": "Invalid authentication",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Authentication failed" }
-              }
-            }
-          }
-        }
-      },
       "402": {
-        "description": "Insufficient credits",
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Insufficient credits for this operation" },
-                "required_credits": { "type": "number", "example": 25.0 },
-                "available_credits": { "type": "number", "example": 10.0 }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
             }
           }
         }
       },
-      "404": {
-        "description": "User or plan not found",
+      "422": {
+        "description": "Unprocessable Entity",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "User subscription plan not found" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
       },
       "500": {
-        "description": "Internal server error",
+        "description": "Internal Server Error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Internal server error during audio trimming" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -2351,74 +2855,80 @@
     }
   }
 },
-      "400": {
-        "description": "Invalid parameters",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Invalid speed_change_factor" }
-              }
-            }
-          }
-        }
-      },
-      "401": {
-        "description": "Invalid authentication",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Authentication failed" }
-              }
-            }
-          }
-        }
-      },
       "402": {
-        "description": "Insufficient credits",
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Insufficient credits for this operation" },
-                "required_credits": { "type": "number", "example": 45.0 },
-                "available_credits": { "type": "number", "example": 30.0 }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
             }
           }
         }
       },
-      "404": {
-        "description": "User or plan not found",
+      "422": {
+        "description": "Unprocessable Entity",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "User subscription plan not found" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
       },
       "500": {
-        "description": "Internal server error",
+        "description": "Internal Server Error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Internal server error during processing" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -2508,36 +3018,80 @@
     }
   }
 },
-      "400": {
-        "description": "Invalid request parameters",
+      "402": {
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": {
-                  "type": "string",
-                  "example": "Missing or invalid audio_url"
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
                 }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
       },
       "500": {
-        "description": "Internal server error",
+        "description": "Internal Server Error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": {
-                  "type": "string",
-                  "example": "Error during MIDI conversion"
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
                 }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -2691,30 +3245,80 @@
             }
           }
         },
-      "422": {
-        "description": "Validation Error",
+      "402": {
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "message": { "type": "string", "example": "Either audio_file or audio_url must be provided." }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
       },
       "500": {
-        "description": "Server Error",
+        "description": "Internal Server Error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "message": { "type": "string", "example": "Internal Server Error" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -2726,7 +3330,7 @@
     "x-codeSamples": [
       {
         "lang": "Python",
-        "source": "import requests\n\nurl = \"https://api.musicgpt.com/api/public/v1/Remix\"\nheaders = {\"Authorization\": \"<API_KEY>\"}\ndata = {\n  \"prompt\": \"Make it sound like Lo-fi with chill beats\",\n  \"lyrics\": \"It's a brand new day\",\n  \"gender\": \"female\",\n  \"title\": \"My Generated Track\",\n  \"webhook_url\": \"https://example.com/my-webhook\"\n}\n\n# Option 1: audio_url\nfiles = {}\ndata[\"audio_url\"] = \"<YOUR_AUDIO_URL>\"\nresponse = requests.post(url, headers=headers, data=data, files=files)\n\n# Option 2: File Upload\n# with open(\"song.mp3\", \"rb\") as f:\n#    files = {\"audio_file\": f}\n#    response = requests.post(url, headers=headers, data=data, files=files)\n\nprint(response.json())"
+        "source": "import requests\n\nurl = \"https://api.musicgpt.com/api/public/v1/Remix\"\nheaders = {\"Authorization\": \"<API_KEY>\"}\ndata = {\n  \"prompt\": \"Make it sound like Lo-fi with chill beats\",\n  \"lyrics\": \"It's a brand new day\",\n  \"gender\": \"female\",\n  \"title\": \"My Generated Track\",\n  \"generate_album_cover\": false,\n  \"lyrics_timestamp\": false,\n  \"webhook_url\": \"https://example.com/my-webhook\"\n}\n\n# Option 1: audio_url\nfiles = {}\ndata[\"audio_url\"] = \"<YOUR_AUDIO_URL>\"\nresponse = requests.post(url, headers=headers, data=data, files=files)\n\n# Option 2: File Upload\n# with open(\"song.mp3\", \"rb\") as f:\n#    files = {\"audio_file\": f}\n#    response = requests.post(url, headers=headers, data=data, files=files)\n\nprint(response.json())"
       }
     ]
   }
@@ -2777,7 +3381,7 @@
                 "type": "string",
                 "description": "Voice style if vocal content is generated.",
                 "enum": ["male", "female", "neutral"],
-                "example": "neutral"
+                "example": "male"
               },
               "title": {
                     "type": "string",
@@ -2860,30 +3464,80 @@
     }
   }
 },
-      "422": {
-        "description": "Validation Error",
+      "402": {
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "message": { "type": "string", "example": "audio_file or audio_url and extend_after are required." }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
       },
       "500": {
-        "description": "Server Error",
+        "description": "Internal Server Error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "message": { "type": "string", "example": "Internal Server Error" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -2895,7 +3549,7 @@
     "x-codeSamples": [
       {
         "lang": "Python",
-        "source": "import requests\n\nurl = \"https://api.musicgpt.com/api/public/v1/extend\"\nheaders = {\"Authorization\": \"<API_KEY>\"}\ndata = {\n  \"extend_after\": 35.0,\n  \"prompt\": \"Add a calming piano outro\",\n  \"lyrics\": \"Let the journey fade away\",\n  \"gender\": \"neutral\", \n  \"lyrics_section_to_extend\": \"New_lyrics\",\n  \"num_outputs\": 1,\n  \"title\": \"My Generated Track\",\n  \"webhook_url\": \"https://example.com/webhook\"\n}\n\n# Option 1: audio_url\ndata[\"audio_url\"] = \"<YOUR_AUDIO_URL>\"\nresponse = requests.post(url, headers=headers, data=data)\n\n# Option 2: File Upload\n# with open(\"song.mp3\", \"rb\") as f:\n#     files = {\"audio_file\": f}\n#     response = requests.post(url, headers=headers, data=data, files=files)\nprint(response.json())"
+        "source": "import requests\n\nurl = \"https://api.musicgpt.com/api/public/v1/extend\"\nheaders = {\"Authorization\": \"<API_KEY>\"}\ndata = {\n  \"extend_after\": 35.0,\n  \"prompt\": \"Add a calming piano outro\",\n  \"lyrics\": \"Let the journey fade away\",\n  \"gender\": \"neutral\", \n  \"lyrics_section_to_extend\": \"New_lyrics\",\n  \"num_outputs\": 1,\n  \"title\": \"My Generated Track\",\n  \"generate_album_cover\": false,\n  \"lyrics_timestamps\": false, \n  \"webhook_url\": \"https://example.com/webhook\"\n}\n\n# Option 1: audio_url\ndata[\"audio_url\"] = \"<YOUR_AUDIO_URL>\"\nresponse = requests.post(url, headers=headers, data=data)\n\n# Option 2: File Upload\n# with open(\"song.mp3\", \"rb\") as f:\n#     files = {\"audio_file\": f}\n#     response = requests.post(url, headers=headers, data=data, files=files)\nprint(response.json())"
       }
     ]
   }
@@ -3031,30 +3685,80 @@
     }
   }
 },
-      "422": {
-        "description": "Validation Error",
+      "402": {
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "message": { "type": "string", "example": "audio_file or audio_url and valid replace range are required." }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
       },
       "500": {
-        "description": "Server Error",
+        "description": "Internal Server Error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "messsage": { "type": "string", "example": "Internal Server Error" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -3066,7 +3770,7 @@
     "x-codeSamples": [
       {
         "lang": "Python",
-        "source": "import requests\n\nurl = \"https://api.musicgpt.com/api/public/v1/inpaint\"\nheaders = {\"Authorization\": \"<API_KEY>\"}\ndata = {\n  \"prompt\": \"Add a soft guitar solo here\",\n  \"replace_start_at\": 12.5,\n  \"replace_end_at\": 20.0,\n  \"lyrics\": \"This is where my story begins\",\n  \"lyrics_section_to_replace\": \"New lyrics\",\n  \"gender\": \"male\",\n  \"num_outputs\": 2,\n  \"title\": \"My Generated Track\",\n  \"webhook_url\": \"https://example.com/webhook\"\n}\n\n# Option 1: audio_url\ndata[\"audio_url\"] = \"<YOUR_AUDIO_URL>\"\nresponse = requests.post(url, headers=headers, data=data)\n\n# Option 2: File Upload\n# with open(\"song.mp3\", \"rb\") as f:\n#     files = {\"audio_file\": f}\n#     response = requests.post(url, headers=headers, data=data, files=files)\n\n print(response.json())"
+        "source": "import requests\n\nurl = \"https://api.musicgpt.com/api/public/v1/inpaint\"\nheaders = {\"Authorization\": \"<API_KEY>\"}\ndata = {\n  \"prompt\": \"Add a soft guitar solo here\",\n  \"replace_start_at\": 12.5,\n  \"replace_end_at\": 20.0,\n  \"lyrics\": \"This is where my story begins\",\n  \"lyrics_section_to_replace\": \"New lyrics\",\n  \"gender\": \"male\",\n  \"num_outputs\": 2,\n  \"title\": \"My Generated Track\",\n  \"generate_album_cover\": false,\n  \"lyrics_timestamps\": false, \n  \"webhook_url\": \"https://example.com/webhook\"\n}\n\n# Option 1: audio_url\ndata[\"audio_url\"] = \"<YOUR_AUDIO_URL>\"\nresponse = requests.post(url, headers=headers, data=data)\n\n# Option 2: File Upload\n# with open(\"song.mp3\", \"rb\") as f:\n#     files = {\"audio_file\": f}\n#     response = requests.post(url, headers=headers, data=data, files=files)\n\n print(response.json())"
       }
     ]
   }
@@ -3185,30 +3889,80 @@
     }
   }
 },
-      "422": {
-        "description": "Validation Error",
+      "402": {
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "message": { "type": "string", "example": "Either audio_file or audio_url must be provided, along with prompt and lyrics." }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
       },
       "500": {
-        "description": "Server Error",
+        "description": "Internal Server Error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "message": { "type": "string", "example": "Internal Server Error" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -3220,7 +3974,7 @@
     "x-codeSamples": [
       {
         "lang": "Python",
-        "source": "import requests\n\nurl = \"https://api.musicgpt.com/api/public/v1/sing_over_instrumental\"\nheaders = {\"Authorization\": \"<API_KEY>\"}\ndata = {\n  \"prompt\": \"Sing emotional vocals over a soft piano instrumental.\",\n  \"lyrics\": \"Never mind I'll find someone like you...\",\n  \"gender\": \"female\",\n  \"title\": \"My Generated Track\",\n  \"webhook_url\": \"https://yourdomain.com/webhook\"\n}\n\n# Option 1: Use audio_url\ndata[\"audio_url\"] = \"<YOUR_AUDIO_URL>\"\nresponse = requests.post(url, headers=headers, data=data)\n\n# Option 2: Upload file\n# with open(\"audio.mp3\", \"rb\") as f:\n#     files = {\"audio_file\": f}\n#     response = requests.post(url, headers=headers, data=data, files=files)\n\n print(response.json())"
+        "source": "import requests\n\nurl = \"https://api.musicgpt.com/api/public/v1/sing_over_instrumental\"\nheaders = {\"Authorization\": \"<API_KEY>\"}\ndata = {\n  \"prompt\": \"Sing emotional vocals over a soft piano instrumental.\",\n  \"lyrics\": \"Never mind I'll find someone like you...\",\n  \"gender\": \"female\",\n  \"title\": \"My Generated Track\",\n  \"generate_album_cover\": false,\n  \"lyrics_timestamps\": false,\n  \"webhook_url\": \"https://yourdomain.com/webhook\"\n}\n\n# Option 1: Use audio_url\ndata[\"audio_url\"] = \"<YOUR_AUDIO_URL>\"\nresponse = requests.post(url, headers=headers, data=data)\n\n# Option 2: Upload file\n# with open(\"audio.mp3\", \"rb\") as f:\n#     files = {\"audio_file\": f}\n#     response = requests.post(url, headers=headers, data=data, files=files)\n\n print(response.json())"
       }
     ]
   }
@@ -3309,30 +4063,80 @@
     }
   }
 },
-      "422": {
-        "description": "Validation Error",
+      "402": {
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Either audio_url or audio_file must be provided" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
       },
       "500": {
-        "description": "Server Error",
+        "description": "Internal Server Error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Internal Server Error" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -3392,30 +4196,80 @@
           }
         }
       },
-      "400": {
-        "description": "Invalid prompt input",
+      "402": {
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Prompt must be between 1 and 1000 characters." }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
       },
       "500": {
-        "description": "Internal server error during lyrics generation",
+        "description": "Internal Server Error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "success": { "type": "boolean", "example": false },
-                "error": { "type": "string", "example": "Internal Server Error" }
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -3520,42 +4374,80 @@
           }
         }
       },
-      "422": {
-        "description": "Validation Error",
+      "402": {
+        "description": "Payment Required",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
                 "success": {
-                  "type": "boolean",
-                  "example": false
+                  "type": "boolean"
                 },
-                "error": {
-                  "type": "string",
-                  "example": "Validation failed."
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
                 }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
             }
           }
         }
       },
       "500": {
-        "description": "Server Error",
+        "description": "Internal Server Error",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
                 "success": {
-                  "type": "boolean",
-                  "example": false
+                  "type": "boolean"
                 },
-                "error": {
-                  "type": "string",
-                  "example": "Internal Server Error"
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
                 }
               }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
             }
           }
         }
@@ -4165,35 +5057,85 @@
             }
           }
         },
-        "422": {
-          "description": "Validation Error / Unprocessable Content",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "success": { "type": "boolean", "example": false },
-                  "error": { "type": "string", "example": "image_file or image_url is required." }
+        "402": {
+        "description": "Payment Required",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
                 }
               }
-            }
-          }
-        },
-        "500": {
-          "description": "Internal Server Error",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "success": { "type": "boolean", "example": false },
-                  "error": { "type": "string", "example": "Internal Server Error" }
-                }
-              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INSUFFICIENT_CREDITS",
+              "message": ""
             }
           }
         }
       },
+      "422": {
+        "description": "Unprocessable Entity",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "UNPROCESSABLE_CONTENT",
+              "message": ""
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal Server Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                },
+                "error_code": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            },
+            "example": {
+              "success": false,
+              "error_code": "INTERNAL_SERVER_ERROR",
+              "message": ""
+            }
+          }
+        }
+      }
+    },
       "security": [
         { "ApiKeyAuth": [] }
       ],
