@@ -2310,7 +2310,7 @@
               },
               "audio_length": {
                 "type": "integer",
-                "description": "Desired duration of generated audio in seconds (beta feature)",
+                "description": "Desired duration of generated audio in seconds.",
                 "example": 30
               }
           
