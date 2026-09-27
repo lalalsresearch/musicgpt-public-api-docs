@@ -83,7 +83,7 @@ data = {
 }
 
 # Option 1: image_url
-data["image_url"] = "https://mybucket.s3.amazonaws.com/image.png"
+data["image_url"] = "<YOUR_IMAGE_URL""
 # This endpoint expects multipart/form-data, so send the fields as form parts
 response = requests.post(
     url, headers=headers, files={k: (None, str(v)) for k, v in data.items()}

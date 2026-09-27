@@ -7,7 +7,7 @@ openapi: 'POST /v1/sound_generator'
 <div className="mg-simple-banner">
   <p className="mg-banner-headline">Sound Generator Pro is here - our fastest, highest-quality generation yet.</p>
   <p className="mg-banner-detail">
-    Free all October - up to 500 generations/day (20/hour). After that, prices drop by over 200%.{' '}
+    **Free throughout October** for up to 500 generations/day, 20/hour. Pricing also drops by more than 200%{' '}
     <a href="/api-documentation/index/pricing">See the new pricing →</a>
   </p>
 </div>
@@ -39,9 +39,9 @@ Sound Generator is designed for flexibility, speed, and professional-grade quali
 
 ## Special features
 
-- **BPM control** — Specify an exact tempo in your prompt (e.g. "at 90 BPM") and Sound Generator locks the output to that tempo, useful when loops need to sync cleanly with an existing track.
-- **Foley support** — Generate everyday, real-world sound effects like footsteps, cloth rustle, or object handling, commonly layered into film, video, and game audio for realism.
-- **Audio length control** — Set the exact duration of your generation, from **5 seconds to 2 minutes**, using the `audio_length` parameter.
+- **BPM control** - Specify an exact tempo in your prompt (e.g. "at 90 BPM") and Sound Generator locks the output to that tempo, useful when loops need to sync cleanly with an existing track.
+- **Foley support** - Generate everyday, real-world sound effects like footsteps, cloth rustle, or object handling, commonly layered into film, video, and game audio for realism.
+- **Audio length control** - Set the exact duration of your generation, from **5 seconds to 2 minutes**, using the `audio_length` parameter.
 
 ## Endpoint
 
@@ -57,10 +57,10 @@ Use this endpoint to generate sounds based on a text description.
 
 Listen to an actual sample:
 
-Prompt: sound of waves crashing at the sea shore.
-<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="https://lalals.s3.amazonaws.com/conversions/0af8567f-6156-4bb2-9adc-99b0c8792700_sound.mp3">Your browser does not support the audio playback.</audio>
+Prompt: sound of bird chirping in a forest.
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="https://cdn1.musicgpt.com/conversions/api/standard/26c9aaf8-f292-4c66-992b-7f3c7dfe85fe.mp3">Your browser does not support the audio playback.</audio>
 
-<a href="https://lalals.s3.amazonaws.com/conversions/0af8567f-6156-4bb2-9adc-99b0c8792700_sound.wav" target="_blank">Download Audio</a>
+<a href="https://cdn1.musicgpt.com/conversions/api/standard/26c9aaf8-f292-4c66-992b-7f3c7dfe85fe.mp3" target="_blank">Download Audio</a>
 
 ---
 
@@ -130,18 +130,44 @@ print(response.text)
 
 ## Webhook Response
 
-Once the sound is ready, your webhook will receive:
+Once the sound is ready, your will receive two webhook reponses:
 
+
+Sound Generator Response
 ```json
 {
-  "success": true, 
-  "conversion_type": "Sound Creator", 
-  "task_id": "0af8567f-6156-4bb2-9adc-99b0c8792700", 
-  "conversion_id": "9e6ac90d-c09e-4ea6-8c39-d9f4e39bbbc8", 
-  "conversion_duration": 2.089795918367347, 
-  "message": "Audio Generation Completed Successfully", 
-  "conversion_paths": {"9e6ac90d-c09e-4ea6-8c39-d9f4e39bbbc8": "https://lalals.s3.amazonaws.com/conversions/0af8567f-6156-4bb2-9adc-99b0c8792700_sound.mp3"}, 
-  "conversion_durations": {"9e6ac90d-c09e-4ea6-8c39-d9f4e39bbbc8": 2.089795918367347}
+    "success": true,
+    "conversion_type": "Sound Creator",
+    "task_id": "26c9aaf8-f292-4c66-992b-7f3c7dfe85fe",
+    "conversion_id": "31b6c4a2-e5e2-44ab-baf1-93ffa4c8a7b7",
+    "conversion_path": "https://cdn1.musicgpt.com/conversions/api/standard/26c9aaf8-f292-4c66-992b-7f3c7dfe85fe.mp3",
+    "conversion_path_wav": null,
+    "conversion_duration": 30.0,
+    "message": "Audio Generation Completed Successfully",
+    "title": "Sound Creator",
+    "conversion_paths": {"31b6c4a2-e5e2-44ab-baf1-93ffa4c8a7b7": "https://cdn1.musicgpt.com/conversions/api/standard/26c9aaf8-f292-4c66-992b-7f3c7dfe85fe.mp3"},
+    "conversion_paths_wav": {"31b6c4a2-e5e2-44ab-baf1-93ffa4c8a7b7": null},
+    "conversion_durations": { "31b6c4a2-e5e2-44ab-baf1-93ffa4c8a7b7": 30.0}
+}
+```
+
+Album Cover Response
+```json
+{
+    "success": true,
+    "conversion_type": "Sound Creator",
+    "task_id": "26c9aaf8-f292-4c66-992b-7f3c7dfe85fe",
+    "image_paths": [
+        "https://cdn1.musicgpt.com/img-gen-pipeline/api/26c9aaf8-f292-4c66-992b-7f3c7dfe85fe.jpg"
+    ],
+    "thumbnail_paths": [
+        "https://cdn1.musicgpt.com/img-gen-pipeline/api/26c9aaf8-f292-4c66-992b-7f3c7dfe85fe_thumb.jpg"
+    ],
+    "image_path": "https://cdn1.musicgpt.com/img-gen-pipeline/api/26c9aaf8-f292-4c66-992b-7f3c7dfe85fe.jpg",
+    "thumbnail_path": "https://cdn1.musicgpt.com/img-gen-pipeline/api/26c9aaf8-f292-4c66-992b-7f3c7dfe85fe_thumb.jpg",
+    "conversion_id_1": "31b6c4a2-e5e2-44ab-baf1-93ffa4c8a7b7",
+    "album_cover_generator_output": true,
+    "subtype": "album_cover_generation"
 }
 ```
 

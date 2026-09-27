@@ -14,12 +14,11 @@ To get the best results, follow these guidelines:
   - `[Chorus – repeat with more intensity]`
   - `[Bridge – add soft strings or a subtle beat drop]`
 - Do not include any artist names in the prompt and lyrics. This applies to the `prompt`,
-  `lyrics`, and `music_style` fields. Selecting a voice model through `voice_id` is a
-  separate mechanism and is not affected — look voices up with
-  [Get Voices by Name](/api-documentation/endpoint/searchVoices).
-
+  and `lyrics` fields.
 ## Best Practice
 
-- **If you provide `lyrics`:** Use `music_style` to describe the genre, mood, or musical style, and leave `prompt` empty.
-- **If `lyrics` is empty:** Use `prompt` to describe the complete song, and leave `music_style` empty.
+- **If you provide `lyrics`:** Use prompt to describe the genre, vibe, instrumentation, and context alongside your lyrics.
+- **If `lyrics` is empty:** Use prompt to describe the complete song.
+
+
 - **Content Moderation** : All requests are internally analyzed for content safety and policy compliance before generation. Please avoid using **NSFW content, hate speech, violence, self-harm, or copyrighted references**.

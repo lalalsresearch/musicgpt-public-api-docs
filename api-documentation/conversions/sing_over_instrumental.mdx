@@ -80,7 +80,7 @@ Once the generation is complete, **webhooks** will be triggered to deliver the f
 curl -X POST "https://api.musicgpt.com/api/public/v1/sing_over_instrumental" \
 -H "accept: application/json" \
 -H "Authorization: <api_key>" \
--F "audio_url=https://youtube.com/audio.mp3" \
+-F "audio_url=<YOUR_AUDIO_URL>" \
 -F "prompt=Sing like Adele in a soulful tone" \
 -F "lyrics=Never mind I'll find someone like you..." \
 -F "gender=female" \
@@ -102,7 +102,7 @@ data = {
 }
 
 # Option 1: Use audio_url
-data["audio_url"] = "https://youtube.com/audio.mp3"
+data["audio_url"] = "<YOUR_AUDIO_URL"
 response = requests.post(url, headers=headers, data=data)
 
 # Option 2: File upload
