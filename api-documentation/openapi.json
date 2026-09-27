@@ -413,12 +413,13 @@
                 "properties": {
                   "prompt": {
                     "type": "string",
-                    "description": "A natural language prompt for music generation. Keep it under 1000 characters. Be clear and descriptive for better results."
+                    "description": "A natural language prompt for music generation. Keep it under 1000 characters. Be clear and descriptive for better results.",
+                    "example": "A happy, upbeat song about summer"
                   },
                   "music_style": {
                     "type": "string",
                     "description": "Style of music to generate (e.g., Rock, Pop)",
-                    "example": "Lo-fi"
+                    "example": ""
                   },
                   "lyrics": {
                     "type": "string",
@@ -602,12 +603,13 @@
                 "properties": {
                   "prompt": {
                     "type": "string",
-                    "description": "A natural language prompt for music generation. Keep it under 1000 characters. Be clear and descriptive for better results."
+                    "description": "A natural language prompt for music generation. Keep it under 1000 characters. Be clear and descriptive for better results.",
+                    "example": "A happy, upbeat song about summer"
                   },
                   "music_style": {
                     "type": "string",
                     "description": "Style of music to generate (e.g., Rock, Pop)",
-                    "example": "Lo-fi"
+                    "example": ""
                   },
                   "lyrics": {
                     "type": "string",
