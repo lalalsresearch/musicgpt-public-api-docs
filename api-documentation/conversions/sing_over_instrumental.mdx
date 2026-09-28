@@ -31,6 +31,8 @@ This endpoint enables you to overlay vocals onto an instrumental audio using a t
 | `lyrics_timestamps`  | Boolean | Optional | If true, generates lyric timestamps for the output track |
 | `webhook_url` | `String`     | Optional | Callback URL to receive processing results.                                         |
 
+> **Max input audio length:** 4 minutes. See [Audio Length Limits](/api-documentation/utilities/ratelimits#audio-length-limits).
+
 >**Note:** Either audio_file or audio_url must be provided.
 
 > **content-type:** multipart/form-data
@@ -80,7 +82,7 @@ Once the generation is complete, **webhooks** will be triggered to deliver the f
 curl -X POST "https://api.musicgpt.com/api/public/v1/sing_over_instrumental" \
 -H "accept: application/json" \
 -H "Authorization: <api_key>" \
--F "audio_url=https://youtube.com/audio.mp3" \
+-F "audio_url=<YOUR_AUDIO_URL>" \
 -F "prompt=Sing like Adele in a soulful tone" \
 -F "lyrics=Never mind I'll find someone like you..." \
 -F "gender=female" \
@@ -102,7 +104,7 @@ data = {
 }
 
 # Option 1: Use audio_url
-data["audio_url"] = "https://youtube.com/audio.mp3"
+data["audio_url"] = "<YOUR_AUDIO_URL>"
 response = requests.post(url, headers=headers, data=data)
 
 # Option 2: File upload
@@ -110,7 +112,7 @@ response = requests.post(url, headers=headers, data=data)
 #     files = {"audio_file": f}
 #     response = requests.post(url, headers=headers, data=data, files=files)
 
-# print(response.json())
+print(response.json())
 ```
 
 ---
@@ -203,7 +205,10 @@ Lyrics Timestamp Webhook
 
 ## Common Errors
 
-* **422 Unprocessable Entity**: Missing required fields like `prompt` or `lyrics`, or no audio input provided.
-* **500 Internal Server Error**: Unexpected error during processing.
+* **402 Payment Required** (`INSUFFICIENT_CREDITS`): Your credit balance is insufficient.
+* **422 Unprocessable Entity** (`UNPROCESSABLE_CONTENT`): Missing required fields like `prompt` or `lyrics`, or no audio input provided.
+* **500 Internal Server Error** (`INTERNAL_SERVER_ERROR`): Unexpected error during processing.
+
+See [Handling Errors](/api-documentation/utilities/error) for the error response format and all error codes.
 
 ---

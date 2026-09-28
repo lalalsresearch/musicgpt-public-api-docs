@@ -71,21 +71,6 @@ Use the [MusicAI Endpoint Explorer](/api-documentation/endpoint/MusicAI) to test
 
 ---
 
-
-## Generation Modes
-
-### Custom Mode
-
-Provide both `lyrics` and `music_style` to craft a fully personalized song.
-
-### Prompt Mode
-
-Supply only a `prompt` and let the system generate everything: lyrics, style, vocals, and more.
-
-> `make_instrumental`, `vocal_only`, and Music AI generation with custom `voice_id` are supported in both modes.
-
----
-
 ## Webhook Delivery
 
 Once the generation is complete, **webhooks** will be triggered to deliver the following:
@@ -117,7 +102,6 @@ headers = {
 
 payload = {
     "prompt": "Create a relaxing lo-fi song for studying",
-    "music_style": "Lo-fi",
     "lyrics": "It's a brand new day",
     "make_instrumental": False,
     "vocal_only": False,

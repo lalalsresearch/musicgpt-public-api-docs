@@ -48,6 +48,8 @@ Visit the [Audio Transcribe Endpoint Explorer](/api-documentation/endpoint/audio
 | `language`       | String  | Optional | Language code (e.g., `en`, `es`, `fr`) for targeted accuracy |
 | `webhook_url`    | String  | Optional | Webhook URL to receive the transcription asynchronously     |
 
+> **Max input audio length:** 8 minutes. See [Audio Length Limits](/api-documentation/utilities/ratelimits#audio-length-limits).
+
 > **content-type:** multipart/form-data
 
 >**Note:** Either audio_file or audio_url must be provided.
@@ -113,11 +115,32 @@ When transcription completes, your webhook will receive:
     "transcription": "Welcome to the show. Today we are talking about how machines learn to listen.", 
     "translation": null, 
     "detected_language": "en", 
+    "title": "Audio Transcription",
     "word_timestamps": [
-        {"word": "Welcome", "start": 0.0, "end": 0.42},
-        {"word": "to", "start": 0.42, "end": 0.55},
-        {"word": "the", "start": 0.55, "end": 0.68},
-        {"word": "show", "start": 0.68, "end": 1.01}
+        {
+            "index": 0,
+            "text": "Welcome",
+            "start": 0,
+            "end": 420
+        },
+        {
+            "index": 1,
+            "text": "to",
+            "start": 420,
+            "end": 550
+        },
+        {
+            "index": 2,
+            "text": "the",
+            "start": 550,
+            "end": 680
+        },
+        {
+            "index": 3,
+            "text": "show",
+            "start": 680,
+            "end": 1010
+        }
     ]
 }
 ```

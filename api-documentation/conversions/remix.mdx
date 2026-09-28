@@ -30,6 +30,8 @@ POST /v1/Remix
 | `lyrics_timestamps`  | Boolean | Optional | If `true`, generates lyric timestamps for the output track. Defaults to `false`. |
 | `webhook_url` | `String`     | Optional     | Callback URL for async response.                                          |
 
+> **Max input audio length:** 4 minutes. See [Audio Length Limits](/api-documentation/utilities/ratelimits#audio-length-limits).
+
 >**Note:** Either `audio_file` or `audio_url` must be provided.
 
 > **content-type:** multipart/form-data
@@ -197,11 +199,11 @@ Lyrics Timestamp Webhook
 
 ## Common Errors
 
-* **422 Unprocessable Entity**
-  Missing required field `prompt`, or neither `audio_file` nor `audio_url` provided.
+* **402 Payment Required** (`INSUFFICIENT_CREDITS`): Your credit balance is insufficient.
+* **422 Unprocessable Entity** (`UNPROCESSABLE_CONTENT`): Missing required field `prompt`, or neither `audio_file` nor `audio_url` provided.
+* **500 Internal Server Error** (`INTERNAL_SERVER_ERROR`): An error occurred during processing or task queueing.
 
-* **500 Internal Server Error**
-  An error occurred during processing or task queueing.
+See [Handling Errors](/api-documentation/utilities/error) for the error response format and all error codes.
 
 ---
 

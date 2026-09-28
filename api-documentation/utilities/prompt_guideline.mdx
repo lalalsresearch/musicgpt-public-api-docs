@@ -9,17 +9,17 @@ To get the best results, follow these guidelines:
 - Keep prompts descriptive and simple.
 - **Prompt limit:** 1000 characters.
 - **Lyrics limit:** 5000 characters.
+- **Exception:** Sound Generator prompts are capped at 300 characters, because they describe
+  short sound effects rather than songs.
 - You can describe song sections like this:
   - `[Intro – soft piano and light synths]`
   - `[Chorus – repeat with more intensity]`
   - `[Bridge – add soft strings or a subtle beat drop]`
-- Do not include any artist names in the prompt and lyrics. This applies to the `prompt`,
-  `lyrics`, and `music_style` fields. Selecting a voice model through `voice_id` is a
-  separate mechanism and is not affected — look voices up with
-  [Get Voices by Name](/api-documentation/endpoint/searchVoices).
+- Do not include any artist names in the `prompt` or `lyrics` fields.
+
 
 ## Best Practice
 
-- **If you provide `lyrics`:** Use `music_style` to describe the genre, mood, or musical style, and leave `prompt` empty.
-- **If `lyrics` is empty:** Use `prompt` to describe the complete song, and leave `music_style` empty.
+- **If you provide `lyrics`:** Use `prompt` to describe the complete song. You can also use section tags inside `lyrics` to guide the arrangement and performance.
+- **If `lyrics` is empty:** Use `prompt` to describe the song’s genre, vibe, instrumentation, and context.
 - **Content Moderation** : All requests are internally analyzed for content safety and policy compliance before generation. Please avoid using **NSFW content, hate speech, violence, self-harm, or copyrighted references**.
