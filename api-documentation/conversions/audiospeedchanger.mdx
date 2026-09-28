@@ -48,6 +48,8 @@ Visit the [Audio Speed Changer Endpoint Explorer](/api-documentation/endpoint/au
 | `output_extension`     | String  | Yes      | Desired output format (`mp3`, `wav`, `flac`, `ogg`, `aac`, `webm`)          |
 | `webhook_url`          | String  | Optional | URL to receive callback notification when processing completes             |
 
+> **Max input audio length:** 8 minutes. See [Audio Length Limits](/api-documentation/utilities/ratelimits#audio-length-limits).
+
 >**Note:** Either audio_file or audio_url must be provided.
 
 > **content-type:** multipart/form-data

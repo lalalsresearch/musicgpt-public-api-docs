@@ -48,6 +48,8 @@ Visit the [Audio Transcribe Endpoint Explorer](/api-documentation/endpoint/audio
 | `language`       | String  | Optional | Language code (e.g., `en`, `es`, `fr`) for targeted accuracy |
 | `webhook_url`    | String  | Optional | Webhook URL to receive the transcription asynchronously     |
 
+> **Max input audio length:** 8 minutes. See [Audio Length Limits](/api-documentation/utilities/ratelimits#audio-length-limits).
+
 > **content-type:** multipart/form-data
 
 >**Note:** Either audio_file or audio_url must be provided.
@@ -138,10 +140,12 @@ When transcription completes, your webhook will receive:
             "text": "show",
             "start": 680,
             "end": 1010
-        },....
-]
+        }
+    ]
 }
 ```
+
+> `word_timestamps` is returned only when `word_timestamps` is `true` in the request. `start` and `end` are in milliseconds. The array above is truncated; the full response has one entry per word.
 
 ---
 

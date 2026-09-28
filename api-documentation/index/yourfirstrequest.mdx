@@ -88,7 +88,7 @@ curl -X 'POST' \
 -H 'Authorization: <api_key>' \
 -H 'Content-Type: application/json' \
 -d '{
-  "music_style": "Song about my love to AI Music in Country Style",
+  "prompt": "Song about my love to AI Music in Country Style",
   "webhook_url": "https://webhook.yourwebsite.com"
 }'
 ```
@@ -124,7 +124,7 @@ To get notified when the music generation is complete, we recommend setting up a
 }
 ```
 
-`audio_url` is a signed AWS URL that is valid for 1 day. Download the file within that
+`audio_url` is a CDN URL that is valid for 1 day. Download the file within that
 window, or fetch a fresh URL from [get conversion by id](/api-documentation/endpoint/getById).
 
 ---

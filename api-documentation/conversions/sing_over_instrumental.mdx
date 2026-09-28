@@ -31,6 +31,8 @@ This endpoint enables you to overlay vocals onto an instrumental audio using a t
 | `lyrics_timestamps`  | Boolean | Optional | If true, generates lyric timestamps for the output track |
 | `webhook_url` | `String`     | Optional | Callback URL to receive processing results.                                         |
 
+> **Max input audio length:** 4 minutes. See [Audio Length Limits](/api-documentation/utilities/ratelimits#audio-length-limits).
+
 >**Note:** Either audio_file or audio_url must be provided.
 
 > **content-type:** multipart/form-data
@@ -102,7 +104,7 @@ data = {
 }
 
 # Option 1: Use audio_url
-data["audio_url"] = "<YOUR_AUDIO_URL"
+data["audio_url"] = "<YOUR_AUDIO_URL>"
 response = requests.post(url, headers=headers, data=data)
 
 # Option 2: File upload
@@ -203,7 +205,10 @@ Lyrics Timestamp Webhook
 
 ## Common Errors
 
-* **422 Unprocessable Entity**: Missing required fields like `prompt` or `lyrics`, or no audio input provided.
-* **500 Internal Server Error**: Unexpected error during processing.
+* **402 Payment Required** (`INSUFFICIENT_CREDITS`): Your credit balance is insufficient.
+* **422 Unprocessable Entity** (`UNPROCESSABLE_CONTENT`): Missing required fields like `prompt` or `lyrics`, or no audio input provided.
+* **500 Internal Server Error** (`INTERNAL_SERVER_ERROR`): Unexpected error during processing.
+
+See [Handling Errors](/api-documentation/utilities/error) for the error response format and all error codes.
 
 ---

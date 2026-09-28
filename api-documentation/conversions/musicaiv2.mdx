@@ -118,7 +118,7 @@ Use the [MusicAI Endpoint Explorer](/api-documentation/endpoint/Musicaiv2) to te
 
 ### Custom Mode
 
-Provide both `lyrics` and `music_style` to craft a fully personalized song.
+Provide your own `lyrics` and use `prompt` to describe the genre, vibe, instrumentation, and context. See the [Prompt Guideline](/api-documentation/utilities/prompt_guideline).
 
 ### Prompt Mode
 
@@ -161,7 +161,6 @@ headers = {
 
 payload = {
     "prompt": "Create a relaxing lo-fi song for studying",
-    "music_style": "Lo-fi",
     "lyrics": "It's a brand new day",
     "make_instrumental": False,
     "vocal_only": False,

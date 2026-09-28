@@ -2297,7 +2297,8 @@
             "properties": {
               "prompt": {
                 "type": "string",
-                "description": "Text prompt guiding the sound generation.",
+                "maxLength": 300,
+                "description": "Text prompt guiding the sound generation. Maximum 300 characters.",
                 "example": "Generate a soothing ambient soundscape."
               },
               "generate_album_cover": {
@@ -2312,7 +2313,9 @@
               },
               "audio_length": {
                 "type": "integer",
-                "description": "Desired duration of generated audio in seconds.",
+                "description": "Desired duration of generated audio in seconds, from 5 to 120.",
+                "minimum": 5,
+                "maximum": 120,
                 "example": 30
               }
           
@@ -2344,10 +2347,10 @@
             },
             "example": {
               "success": true,
-              "task_id": "0af8567f-6156-4bb2-9adc-99b0c8792700",
-              "conversion_id": "9e6ac90d-c09e-4ea6-8c39-d9f4e39bbbc8",
+              "task_id": "26c9aaf8-f292-4c66-992b-7f3c7dfe85fe",
+              "conversion_id": "31b6c4a2-e5e2-44ab-baf1-93ffa4c8a7b7",
               "eta": 84,
-              "credit_estimate": 0.99,
+              "credit_estimate": 0.011,
               "message": "",
               "status": "IN_QUEUE"
             }
@@ -4188,17 +4191,17 @@
                 "message": { "type": "string" },
                 "lyrics": { "type": "string" },
                 "conversion_id": { "type": "string" },
-                "credit_estimate": { "type": "integer" }
+                "credit_estimate": { "type": "number", "format": "float" }
               },
               "example": {
                 "success": true,
                 "task_id": "0caa0bc2-d05a-414a-a730-a78e8e7f0b31",
-                "message": "Lyrics generated successfully",
+                "message": "Lyrics Generated Successfully",
                 "title": null,
                 "music_style": null,
                 "conversion_id": null,
-                "lyrics": "Under the silver moonlight we sway...\n...\n",
-                "credit_estimate": 10
+                "lyrics": "[Verse 1]\nYou left ...",
+                "credit_estimate": 0.005
               }
             }
           }

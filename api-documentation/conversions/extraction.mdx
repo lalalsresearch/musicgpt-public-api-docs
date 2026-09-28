@@ -31,6 +31,8 @@ Use this endpoint to extract stems like vocals, drums, guitar, or more from an a
 | `eco_mode`              | `boolean` | Optional     | Enable eco mode for faster parallel extraction. Default: `false`. |
 | `webhook_url`           | `string`     | Optional | Callback URL to receive async processing results.                                           |
 
+> **Max input audio length:** 8 minutes. See [Audio Length Limits](/api-documentation/utilities/ratelimits#audio-length-limits).
+
 >**Note:** Either audio_file or audio_url must be provided.
 
 >**content-type:** multipart/form-data
@@ -102,15 +104,15 @@ These preprocessing steps can be applied to the input audio before stem extracti
 ## Sample Output
 
 Sample Output : Vocals
-<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="https://lalals.s3.amazonaws.com/conversions/1683c35d-3990-4aac-98da-6847a6893893_vocals.mp3">Your browser does not support the audio playback.</audio>
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="https://cdn1.musicgpt.com/conversions/985db57f-ba11-4d4b-adf4-a665c60da678_vocals.mp3">Your browser does not support the audio playback.</audio>
 
-<a href="https://lalals.s3.amazonaws.com/conversions/1683c35d-3990-4aac-98da-6847a6893893_vocals.wav" target="_blank">Download Audio</a>
+<a href="https://cdn1.musicgpt.com/conversions/985db57f-ba11-4d4b-adf4-a665c60da678_vocals.mp3" target="_blank">Download Audio</a>
 
 
-Sample Output : instrumentals
-<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="https://lalals.s3.amazonaws.com/conversions/1683c35d-3990-4aac-98da-6847a6893893_instrumental.mp3">Your browser does not support the audio playback.</audio>
+Sample Output : Instrumental
+<audio controls="1" controlslist="nodownload nofullscreen noremoteplayback" src="https://cdn1.musicgpt.com/conversions/985db57f-ba11-4d4b-adf4-a665c60da678_instrumental.mp3">Your browser does not support the audio playback.</audio>
 
-<a href="https://lalals.s3.amazonaws.com/conversions/1683c35d-3990-4aac-98da-6847a6893893_instrumental.wav" target="_blank">Download Audio</a>
+<a href="https://cdn1.musicgpt.com/conversions/985db57f-ba11-4d4b-adf4-a665c60da678_instrumental.mp3" target="_blank">Download Audio</a>
 
 ---
 ## Sample Request
@@ -196,8 +198,11 @@ print(response.json())
 
 ## Common Errors
 
-* **422 Unprocessable Entity**: When neither `audio_url` nor `audio_file` is provided.
-* **500 Internal Server Error**: A server-side error occurred.
+* **402 Payment Required** (`INSUFFICIENT_CREDITS`): Your credit balance is insufficient.
+* **422 Unprocessable Entity** (`UNPROCESSABLE_CONTENT`): When neither `audio_url` nor `audio_file` is provided.
+* **500 Internal Server Error** (`INTERNAL_SERVER_ERROR`): A server-side error occurred.
+
+See [Handling Errors](/api-documentation/utilities/error) for the error response format and all error codes.
 
 ---
 

@@ -3,17 +3,25 @@ title: Sound Generator
 openapi: 'POST /v1/sound_generator'
 ---
 
-
-<div className="mg-simple-banner">
-  <p className="mg-banner-headline">Sound Generator Pro is here - our fastest, highest-quality generation yet.</p>
-  <p className="mg-banner-detail">
-    **Free throughout October** for up to 500 generations/day, 20/hour. Pricing also drops by more than 200%{' '}
-    <a href="/api-documentation/index/pricing">See the new pricing →</a>
-  </p>
+<div className="mg-pro-card">
+  <div className="mg-wave" aria-hidden="true"><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /></div>
+  <div className="mg-hero-badges mg-badges-left">
+    <span className="mg-pro-badge">Pro model</span>
+    <span className="mg-free-chip"><Icon icon="gift" iconType="solid" /> Free all October</span>
+  </div>
+  <p className="mg-pro-card-title">Sound Generator <span className="mg-gradient-text">Pro</span></p>
+  <p className="mg-pro-card-text">Our fastest, highest-quality sound model yet, now powering every request to <code>/v1/sound_generator</code>. Free throughout October for up to 500 generations/day and 20/hour; after October, pricing is more than 3x lower than before.</p>
+  <div className="mg-stats">
+      <div className="mg-stat"><span className="mg-stat-value">$0</span><span className="mg-stat-label">all of October</span></div>
+      <div className="mg-stat"><span className="mg-stat-value">500</span><span className="mg-stat-label">generations / day</span></div>
+      <div className="mg-stat"><span className="mg-stat-value">20</span><span className="mg-stat-label">generations / hour</span></div>
+      <div className="mg-stat"><span className="mg-stat-value">3x</span><span className="mg-stat-label">cheaper after October</span></div>
+    </div>
+  <div className="mg-pro-card-actions">
+    <a href="/api-documentation/index/pricing" className="mg-btn mg-btn-primary">See the new pricing →</a>
+    <a href="/api-documentation/endpoint/soundgenerator" className="mg-btn mg-btn-ghost">Open the playground</a>
+  </div>
 </div>
-
-
-
 
 Create custom sounds with AI using just a simple prompt.
 
@@ -39,9 +47,19 @@ Sound Generator is designed for flexibility, speed, and professional-grade quali
 
 ## Special features
 
-- **BPM control** - Specify an exact tempo in your prompt (e.g. "at 90 BPM") and Sound Generator locks the output to that tempo, useful when loops need to sync cleanly with an existing track.
-- **Foley support** - Generate everyday, real-world sound effects like footsteps, cloth rustle, or object handling, commonly layered into film, video, and game audio for realism.
-- **Audio length control** - Set the exact duration of your generation, from **5 seconds to 2 minutes**, using the `audio_length` parameter.
+<CardGroup cols={3}>
+  <Card title="BPM control" icon="drum">
+    Specify an exact tempo in your prompt (e.g. "at 90 BPM") and the output locks to it, so loops sync cleanly with an existing track.
+  </Card>
+  <Card title="Foley support" icon="shoe-prints">
+    Everyday, real-world sounds like footsteps, cloth rustle, or object handling, ready to layer into film, video, and game audio.
+  </Card>
+  <Card title="Audio length control" icon="clock">
+    Set the exact duration, from **5 seconds to 2 minutes**, with the `audio_length` parameter.
+  </Card>
+</CardGroup>
+
+---
 
 ## Endpoint
 
@@ -76,9 +94,9 @@ Visit the [Sound Generator Endpoint Explorer](/api-documentation/endpoint/soundg
 
 | Parameter        | Type    | Required | Description                                             |
 |------------------|---------|----------|---------------------------------------------------------|
-| `prompt`         | String  | Yes      | A natural language description of the sound you want    |
+| `prompt`         | String  | Yes      | A natural language description of the sound you want. Maximum 300 characters. |
 | `webhook_url`    | String  | Optional | Webhook URL to receive a callback with the audio result |
-| `audio_length`        | int  | Optional | Specify song length             |
+| `audio_length`   | Integer | Optional | Duration of the generated audio in seconds, from `5` to `120` |
 | `generate_album_cover` | Boolean | Optional  | If `true`, generate an album cover for the generated audio |
 
 > **content-type:** application/x-www-form-urlencoded 
@@ -117,10 +135,10 @@ print(response.text)
 ```json
 {
   "success":true,
-  "task_id":"0af8567f-6156-4bb2-9adc-99b0c8792700",
-  "conversion_id":"9e6ac90d-c09e-4ea6-8c39-d9f4e39bbbc8",
+  "task_id":"26c9aaf8-f292-4c66-992b-7f3c7dfe85fe",
+  "conversion_id":"31b6c4a2-e5e2-44ab-baf1-93ffa4c8a7b7",
   "eta":84,
-  "credit_estimate":0.99,
+  "credit_estimate":0.011,
   "message":"",
   "status":"IN_QUEUE"
 }
@@ -130,10 +148,12 @@ print(response.text)
 
 ## Webhook Response
 
-Once the sound is ready, your will receive two webhook reponses:
+Once the sound is ready, your webhook will receive:
 
+* 1 Sound Generator webhook
+* 1 Album Cover webhook — sent only when `generate_album_cover` is `true`
 
-Sound Generator Response
+Sound Generator Webhook
 ```json
 {
     "success": true,
@@ -151,7 +171,7 @@ Sound Generator Response
 }
 ```
 
-Album Cover Response
+Album Cover Webhook
 ```json
 {
     "success": true,

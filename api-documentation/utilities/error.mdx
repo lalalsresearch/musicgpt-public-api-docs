@@ -25,11 +25,26 @@ Below is a list of common error codes returned by the API, along with their desc
 | **503** | SERVICE_UNAVAILABLE | The service is temporarily unavailable. Try again later. |
 
 ---
+
+## Error Response Format
+
+Error responses share the same JSON body. Use `error_code` to branch on the error type in your code, and `message` for details.
+
+```json
+{
+  "success": false,
+  "error_code": "INSUFFICIENT_CREDITS",
+  "message": "Insufficient credits to process this request."
+}
+```
+
+---
+
 ## Error Handling Tips
 
-- **Check the Response Body**: In most cases, the response body will contain additional information regarding the error, such as error messages or codes that can help you pinpoint the issue.
+- **Check the Response Body**: The `error_code` and `message` fields tell you what went wrong and help you pinpoint the issue.
 - **Rate Limits**: If you encounter a **429** error, avoid sending requests too frequently. Implement exponential backoff to retry requests after waiting for the rate limit to reset.
-- **Authentication**: A **403 Forbidden** error may be due to incorrect API key or insufficient permissions. Ensure that your key is valid and has the right scopes to access the resource.
+- **Authentication**: A **401** error means your API key is missing or invalid. A **403** error means your plan does not include the requested feature. Check your key and plan.
 - **Testing**: Always test your API calls in a controlled environment to ensure that the request format and parameters are correct.
 
 > 📌 **Tip:** Always handle errors gracefully in your application. Proper error handling ensures that users have a better experience, even when things go wrong!
@@ -66,12 +81,20 @@ response = requests.post(
 
 if response.status_code == 200:
     print("Request successful:", response.json())
-
-elif response.status_code == 422:
-    print("422:", response.text)
-
-elif response.status_code == 500:
-    print("500:", response.text)
-
 else:
-    print(f"{response.status_code}:", response.text)
+    try:
+        error = response.json()
+        error_code = error.get("error_code")
+        message = error.get("message")
+    except ValueError:
+        error_code, message = None, response.text
+
+    if error_code == "INSUFFICIENT_CREDITS":
+        print("Add credits to your account:", message)
+    elif error_code == "UNPROCESSABLE_CONTENT":
+        print("Check your request parameters:", message)
+    elif error_code == "TOO_MANY_REQUESTS":
+        print("Rate limit exceeded, retry later:", message)
+    else:
+        print(f"{response.status_code} {error_code}:", message)
+```
