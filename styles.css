@@ -448,7 +448,7 @@
   margin-bottom: 0;
   margin-right: 8px;
 }
-.mg-badges-left { justify-content: flex-start; }
+.mg-badges-left { justify-content: flex-start;}
 
 .mg-pro-badge {
   display: inline-flex;
@@ -599,4 +599,11 @@
   .mg-free-card { padding: 16px; }
   .mg-pro-card { padding: 1.25rem; }
   .mg-pro-card-title { font-size: 1.35rem; }
+}
+
+.mg-free-note {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--mg-text-muted);
 }
